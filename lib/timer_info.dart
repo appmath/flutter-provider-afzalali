@@ -1,11 +1,15 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/foundation.dart';
 
-class TimerInfo with ChangeNotifier {
-  int _remainingTime = 0;
-  int getRemainingTime() => _remainingTime;
+class TimerInfo extends ChangeNotifier {
+  int _remainingTime = 60;
 
-  upDateRemainingTime() {
-    _remainingTime++;
+  int get remainingTime => _remainingTime;
+
+  updateRemainingTime() {
+    _remainingTime--;
+    if (_remainingTime == 0) {
+      _remainingTime = 60;
+    }
     notifyListeners();
   }
 }

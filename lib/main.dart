@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'homepage.dart';
 
+// https://www.youtube.com/watch?v=QT2LFIe794I&t=154s
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ChangeNotifierProvider(
-        create: (context) => TimerInfo(),
+      home: // Rebuilds only the widgets that are listening
+          ChangeNotifierProvider(
+        create: (ctx) => TimerInfo(),
         child: HomePage(),
       ),
     );
