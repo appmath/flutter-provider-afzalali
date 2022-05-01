@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_afzalali/timer_info.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,17 +7,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // int initialValue = 60;
+  int initialValue = 60;
 
   @override
   void initState() {
     Timer.periodic(const Duration(seconds: 1), (t) {
-      var timerInfo = Provider.of<TimerInfo>(context, listen: false);
-      timerInfo.updateRemainingTime();
-      // print('timer: ${t.tick}');
-      // setState(() {
-      //   initialValue--;
-      // });
+      setState(() {
+        initialValue--;
+      });
     });
     super.initState();
   }
@@ -34,14 +29,10 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Image.asset('assets/stopwatch.png'),
             const SizedBox(height: 32),
-            // Note that child might be tied to the main widget, it doesn't get updated
-            Consumer<TimerInfo>(
-              builder: (BuildContext context, timerInfoBasic, Widget? child) =>
-                  Text(
-                '${timerInfoBasic.remainingTime}',
-                style: TextStyle(fontSize: 72),
-              ),
-            ),
+            Text(
+              '$initialValue',
+              style: TextStyle(fontSize: 72),
+            )
           ],
         ),
       ),
