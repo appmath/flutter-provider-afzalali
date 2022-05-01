@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_afzalali/timer_info.dart';
+import 'package:provider/provider.dart';
 
 import 'homepage.dart';
 
@@ -13,7 +15,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: ChangeNotifierProvider(
+        create: (ctx) => TimerInfo(),
+        child: HomePage(),
+      ),
     );
   }
 }
